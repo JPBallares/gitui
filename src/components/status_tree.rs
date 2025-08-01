@@ -514,6 +514,16 @@ impl Component for StatusTreeComponent {
 					Ok(self
 						.move_selection(MoveSelection::PageDown)
 						.into())
+				} else if key_match(e, self.key_config.keys.scroll_up_half_page)
+				{
+					Ok(self
+						.move_selection(MoveSelection::HalfPageUp)
+						.into())
+				} else if key_match(e, self.key_config.keys.scroll_down_half_page)
+				{
+					Ok(self
+						.move_selection(MoveSelection::HalfPageDown)
+						.into())
 				} else if key_match(e, self.key_config.keys.move_left)
 				{
 					Ok(self

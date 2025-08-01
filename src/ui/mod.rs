@@ -148,6 +148,10 @@ pub fn common_nav(
 		|| key_match(key, key_config.keys.shift_down)
 	{
 		Some(MoveSelection::End)
+	} else if key_match(key, key_config.keys.scroll_up_half_page) {
+		Some(MoveSelection::HalfPageUp)
+	} else if key_match(key, key_config.keys.scroll_down_half_page) {
+		Some(MoveSelection::HalfPageDown)
 	} else {
 		None
 	}
