@@ -322,6 +322,7 @@ impl CommitList {
 			//TODO: support this?
 			// ScrollType::Home => 0,
 			// ScrollType::End => self.selection_max(),
+			ScrollType::HalfPageUp | ScrollType::HalfPageDown => return Ok(false),
 			_ => return Ok(false),
 		};
 
@@ -373,6 +374,12 @@ impl CommitList {
 			}
 			ScrollType::PageDown => {
 				self.selection.saturating_add(page_offset)
+			}
+			ScrollType::HalfPageUp => {
+				self.selection.saturating_sub(page_offset / 2)
+			}
+			ScrollType::HalfPageDown => {
+				self.selection.saturating_add(page_offset / 2)
 			}
 			ScrollType::Home => 0,
 			ScrollType::End => self.selection_max(),

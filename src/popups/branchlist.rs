@@ -439,6 +439,12 @@ impl BranchListPopup {
 			ScrollType::PageUp => self
 				.selection
 				.saturating_sub(self.current_height.get()),
+			ScrollType::HalfPageDown => self
+				.selection
+				.saturating_add(self.current_height.get() / 2),
+			ScrollType::HalfPageUp => self
+				.selection
+				.saturating_sub(self.current_height.get() / 2),
 			ScrollType::Home => 0,
 			ScrollType::End => {
 				let num_branches: u16 =

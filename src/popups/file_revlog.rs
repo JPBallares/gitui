@@ -321,6 +321,11 @@ impl FileRevlogPopup {
 			ScrollType::PageDown => old_selection
 				.saturating_add(height_in_items.saturating_sub(2))
 				.min(max_selection),
+			ScrollType::HalfPageUp => old_selection
+				.saturating_sub((height_in_items.saturating_sub(2)) / 2),
+			ScrollType::HalfPageDown => old_selection
+				.saturating_add((height_in_items.saturating_sub(2)) / 2)
+				.min(max_selection),
 		};
 
 		let needs_update = new_selection != old_selection;

@@ -128,6 +128,8 @@ pub struct KeysList {
 	pub commit_history_next: GituiKeyEvent,
 	pub commit: GituiKeyEvent,
 	pub newline: GituiKeyEvent,
+	pub scroll_up_half_page: GituiKeyEvent,
+	pub scroll_down_half_page: GituiKeyEvent,
 }
 
 #[rustfmt::skip]
@@ -223,8 +225,10 @@ impl Default for KeysList {
 			view_submodule_parent: GituiKeyEvent::new(KeyCode::Char('p'),  KeyModifiers::empty()),
 			update_submodule: GituiKeyEvent::new(KeyCode::Char('u'),  KeyModifiers::empty()),
 			commit_history_next: GituiKeyEvent::new(KeyCode::Char('n'),  KeyModifiers::CONTROL),
-			commit: GituiKeyEvent::new(KeyCode::Char('d'),  KeyModifiers::CONTROL),
+			commit: GituiKeyEvent::new(KeyCode::Char('d'),  KeyModifiers::ALT),
 			newline: GituiKeyEvent::new(KeyCode::Enter,  KeyModifiers::empty()),
+			scroll_up_half_page: GituiKeyEvent::new(KeyCode::Char('u'),  KeyModifiers::CONTROL),
+			scroll_down_half_page: GituiKeyEvent::new(KeyCode::Char('d'),  KeyModifiers::CONTROL),
 		}
 	}
 }

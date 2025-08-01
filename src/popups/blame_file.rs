@@ -711,6 +711,14 @@ impl BlameFilePopup {
 					self.current_height.get().saturating_sub(2),
 				)
 				.min(max_selection),
+			ScrollType::HalfPageUp => old_selection.saturating_sub(
+				(self.current_height.get().saturating_sub(2)) / 2,
+			),
+			ScrollType::HalfPageDown => old_selection
+				.saturating_add(
+					(self.current_height.get().saturating_sub(2)) / 2,
+				)
+				.min(max_selection),
 		};
 
 		let needs_update = new_selection != old_selection;

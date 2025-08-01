@@ -242,6 +242,18 @@ impl DiffComponent {
 							as usize,
 					)
 				}
+				ScrollType::HalfPageDown => {
+					self.selection.get_bottom().saturating_add(
+						(self.current_size.get().1.saturating_sub(1)
+							as usize) / 2,
+					)
+				}
+				ScrollType::HalfPageUp => {
+					self.selection.get_top().saturating_sub(
+						(self.current_size.get().1.saturating_sub(1)
+							as usize) / 2,
+					)
+				}
 			};
 
 			self.update_selection(new_start);
@@ -851,6 +863,14 @@ impl Component for DiffComponent {
 				} else if key_match(e, self.key_config.keys.page_down)
 				{
 					self.move_selection(ScrollType::PageDown);
+					Ok(EventState::Consumed)
+				} else if key_match(e, self.key_config.keys.scroll_up_half_page)
+				{
+					self.move_selection(ScrollType::HalfPageUp);
+					Ok(EventState::Consumed)
+				} else if key_match(e, self.key_config.keys.scroll_down_half_page)
+				{
+					self.move_selection(ScrollType::HalfPageDown);
 					Ok(EventState::Consumed)
 				} else if key_match(
 					e,
